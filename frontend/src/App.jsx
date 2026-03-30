@@ -15,6 +15,7 @@ import Chatbot        from './components/Chatbot'
 import AdminDashboard from './components/AdminDashboard'
 import PrivateRoutes  from './components/PrivateRoutes'
 import AdminRoute     from './components/AdminRoute'
+import PaymentPage from './components/PaymentPage';
 
 const GuestRoute = () => {
   const token = localStorage.getItem('token')
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/volunteers"     element={<VolunteersPage />} />
         <Route path="/therapists"     element={<TherapistPage />} />
         <Route path="/book/:type/:id" element={<BookingPage />} />
+        <Route path="/payment"         element={<PaymentPage />} />
         <Route path="/assessment"     element={<Assessment />} />
         <Route path="/result"         element={<Result />} />
         <Route path="/chatbot"        element={<Chatbot />} />
