@@ -1,0 +1,5 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: #f7fbf9; color: #1a2e28; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0f7f4; }
+::-webkit-scrollbar-thumb { background: #4A7C6F; border-radius: 3px; }
