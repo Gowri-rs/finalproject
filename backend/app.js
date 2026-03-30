@@ -1,5 +1,6 @@
 const express = require('express')
 const cors    = require('cors')
+const path    = require('path')
 require('dotenv').config()
 
 const connectDB        = require('./db')
@@ -21,6 +22,7 @@ app.use(cors({
 }))
 app.use(express.json())
 
+// API routes
 app.use('/api/auth',        authRoutes)
 app.use('/api/admin',       adminRoutes)
 app.use('/api/volunteers',  volunteerRoutes)
@@ -28,8 +30,16 @@ app.use('/api/therapists',  therapistRoutes)
 app.use('/api/assessments', assessmentRoutes)
 app.use('/api/bookings',    bookingRoutes)
 app.use('/api/chatbot',     chatbotRoutes)
-app.use('/api/questions',  questionRoutes)
-app.use('/api/payments',   paymentRoutes)
+app.use('/api/questions',   questionRoutes)
+app.use('/api/payments',    paymentRoutes)
+
+// ✅ Serve frontend build
+app.use(express.static(path.join(__dirname, '../frontend/dist')))
+
+// ✅ All unknown routes → return React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'))
+})
 
 connectDB().then(() => {
   app.listen(process.env.PORT || 5000, () =>
